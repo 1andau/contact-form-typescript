@@ -1,0 +1,34 @@
+$secondery-color: rgb(22, 53, 104);
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $secondery-color;
+    width: 940px;
+    text-align: left;
+
+
+    img {
+        width: 474.46px;
+        height: 70px;
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        margin-bottom: 40px;
+        font-family: 'SF UI Display';
+        font-weight: 600;
+        font-size: 24px;
+        text-align: left;
+
+    }
+
+    p {
+        font-family: 'Open Sans';
+        font-weight: 400;
+        color: #353238;
+        line-height: 150%;
+
+    }
+}
