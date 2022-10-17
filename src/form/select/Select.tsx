@@ -1,40 +1,56 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React from 'react'
 
 
-const Select:React.FC = () => {
-    const [open, setOpen] = React.useState(false);
-    const sortRef = React.useRef<HTMLDivElement>(null);
 
-  
+
+ type SelectProps = {
+  id: string;
+  isRequired: boolean;
+  register: Function;
+  options: object;
+  children: React.ReactNode;
+ }
+
+const renderOptions = (options: object) => {
+  return Object.entries(options).map(([key, value]) => (
+    <option key={key} value={key}> {value} </option>
+  ))
+}
+
+
+
+const Select = ({ id, children, isRequired, register, options }: SelectProps) => {
+
+
+
+    // const [open, setOpen] = React.useState(false);
+
+
+
+
   return (
-<div className="fullInput" ref={sortRef}>
-<span onClick={() => setOpen(!open)}> Показать дополнительные поля ▾</span>
 
 
-{open && (
-  <div className="fullInput">
-    <p>
-      <label htmlFor="inputText">Получатель</label>
-        <input id="name" className="form-input" type="text" placeholder="ФИО"/>
-        <small className="name-error"></small>
-      </p>
-
-
-
-      <div className="select-wrapper">
-    <select className="select">
-
-<small></small>
-
-</select>        
-</div>
+    <div className='fullInput'>
+          <div className="select-wrapper">
+    {/* <p key={id}>
+      {children}
+      {renderAsterisk(isRequired)}
+    </p> */}
+    <select className="select" id={id} required={isRequired} {...register(id)}>
+      <option className='dynamic' label="" hidden />
+      {renderOptions(options)}
+    </select>
   </div>
-
-   
-)}
-
 </div>
+
+
+
+
+
+
+
+
 
   )
 }
