@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.png';
 import './style.scss'
 
-export const Info = () => {
+export const InfoBlock = () => {
 
 return(
     <section className="info">
