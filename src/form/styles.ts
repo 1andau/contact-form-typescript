@@ -15,12 +15,12 @@ align-items: center;
 
 export const FormContainer = styled.div`
 background: #fff;
+
 `;
 export const Form = styled.form`
 display: grid;
 grid-template-columns: 1fr 1fr;
 grid-gap: 20px;
-
 
 p{
     margin: 0;
@@ -30,24 +30,31 @@ p{
 
 `;
 
+
+
 export const FullInput = styled.div`
 grid-column: 1 / 3;
 
 `;
+export const FullInputContainer = styled.div`
+display: grid;
+grid-gap: 20px;
+`;
 
-export const SelectWrapper = styled.div`
+export const SelectDiv = styled.div`
 position: relative;
 border: 2px solid #E3E3E3;
 border-radius: 8px;
 &::after {
+  content: "▾"; 
   color: black;
-  content: '▾';
   margin-right: 10px;
   pointer-events: none;
   position: absolute;
   right: 10px;
   top: 7px;
   font-size: 20px;
+  
 `;
 
 
@@ -80,3 +87,4 @@ font-size: 15px;
 margin: 10px 10px;
 cursor: pointer;
 `
+

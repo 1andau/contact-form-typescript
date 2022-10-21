@@ -1,31 +1,45 @@
 {
-    "cities" : 
-    [
-        {
-          "id": "MOW",
-          "name": "Москва"
-        },
-        {
-          "id": "SPB",
-          "name": "Санкт-Петербург"
-        },
-        {
-          "id": "KZN",
-          "name": "Казань"
-        },
-        {
-          "id": "KDA",
-          "name": "Краснодар"
-        }
-      ], 
-
-      "sources" : 
-      [
-        "Инстаграм",
-        "От друзей",
-        "Реклама",
-        "Поисковые системы",
-        "Search engines"
-      ]
-
+"FORM": {
+    "TITLE": "Supportformular",
+    "CAPTION": "Rückfragen, Feedback, Kritik oder Anregungen können Sie uns schnell und unkompliziert in diesem Formular übermitteln. Senden Sie uns eine Nachricht und wir melden uns umgehend bei Ihnen.",
+    "REQUIRED": "Pflichtfelder",
+    "NAME": {
+      "LABEL": "Name",
+      "PLACEHOLDER": "Name",
+      "ERROR": "Bitte geben Sie Ihren Namen ein.",
+      "ERROR_NUM": "Name kann nur Buchstaben enthalten."
+    },
+    "EMAIL": {
+      "LABEL": "Email *",
+      "PLACEHOLDER": "example@skdesign.ru",
+      "ERROR": "Bitte geben Sie eine gültige Emailadresse ein."
+    },
+    "TOPIC": {
+      "LABEL": "Themenbereich",
+      "CHOOSE": "Bitte wählen",
+      "GENERAL": "Allgemeine Anfrage",
+      "SOFTWARE": "Softwarefehler",
+      "CALL": "Rückruf",
+      "ERROR": "Bitte wählen Sie einen Themenbereich."
+    },
+    "VERSION": {
+      "LABEL": "Versionsnummer",
+      "ERROR": "Bitte geben Sie die Versionsnummer Ihrer Software ein."
+    },
+    "PHONE": {
+      "LABEL": "Telefonnummer",
+      "ERROR": "Bitte geben Sie Ihre Telefonnummer ein."
+    },
+    "DESC": {
+      "LABEL": "Beschreibung",
+      "ERROR": "Bitte beschreiben Sie Ihr Angliegen."
+    },
+    "SEND": "Absenden"
+  },
+  "RESULT": {
+    "TITLE": "Formular versendet!",
+    "CAPTION": "Ein Mitarbeiter wird sich schenllstmöglich um Ihr Anliegen kümmern.",
+    "EDIT": "Zurück",
+    "NEW": "Neues Formular"
+  }
 }
