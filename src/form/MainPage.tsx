@@ -1,6 +1,6 @@
 import React from 'react';
-import { InfoBlock } from '../Info/InfoBlock';
-import { InputText } from '../Inputs/InputText';
+import { InfoBlock } from './Info/InfoBlock';
+import { InputText } from './Inputs/InputText';
 import {
   Container,
   FormContainer,
@@ -8,13 +8,13 @@ import {
   FullInput,
   FullInputContainer,
   HiddenText,
-} from '../styles';
+} from './styles';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
-import { Options } from '../options/Options';
-import {selecterCitiesProps, selecterSourcesProps, selecterCities, selecterSources } from '../options/selectOptions';
-import { setData } from '../../redux/db/InputSlice';
+import { Select } from './options/Select';
+import {selecterCitiesProps, selecterSourcesProps, selecterCities, selecterSources } from './options/selectOptions';
+import { setData } from '../redux/db/InputSlice';
 import { useForm } from "react-hook-form";
 
 export interface FormValues {
@@ -106,7 +106,7 @@ error={errors.linkSocialMedia}>
 <FullInput>
 <FullInputContainer>
 
- <Options
+ <Select
    id={"cities"} isRequired={true} 
    options={selecterCities}
    register={register}
@@ -135,7 +135,7 @@ placeholder={t('ФИО')}
 error={errors.recipient}>
 </InputText>
 
-<Options
+<Select
    id={"sources"} isRequired={true} 
    options={selecterSources}
    register={register}

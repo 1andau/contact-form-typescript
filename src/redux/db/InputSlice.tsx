@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { FormValues } from '../../form/support/MainPage';
+import { FormValues } from '../../form/MainPage';
 
 const initialState: FormValues =  {
   name: "",

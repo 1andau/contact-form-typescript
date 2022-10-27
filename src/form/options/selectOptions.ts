@@ -22,16 +22,3 @@ export interface selecterCitiesProps {
 export interface selecterSourcesProps {
   label: string;
 }
-
-export type UsersInfo = {
-  name: string;
-  email: string;
-  linkSocialMedia: string;
-  companyName: string;
-  recipient: string;
-  phone?: number;
-};
-
-export interface FilterSliceState {
-  data: UsersInfo[];
-}

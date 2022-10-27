@@ -1,4 +1,3 @@
-import { FormEvent } from 'react';
 import { SelectButton, SelectDiv } from '../styles';
 import ErrorMessage from "../error/Eror";
 
@@ -16,7 +15,7 @@ interface SelecterProps {
 
 }
 
-export const Options = ({
+export const Select = ({
   id,
   options,
   register,
