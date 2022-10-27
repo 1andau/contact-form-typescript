@@ -1,10 +1,15 @@
-import MainPage from './form/MainPage';
 import './App.scss';
+import { Routes, Route } from 'react-router-dom';
+import { Support } from './form/support/Support';
 
-function App() {
+
+
+const App = () => {
   return (
     <div className="App">
-      <MainPage />
+      <Routes>
+      <Route path='/' element={<Support />} />
+      </Routes>
     </div>
   );
 }

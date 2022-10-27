@@ -8,7 +8,6 @@ export const Error = styled.div.attrs(() => ({
 
   color: red;
   font-size: 15px;
-  position: absolute;
   left: 0;
 
   display: flex;

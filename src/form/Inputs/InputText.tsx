@@ -1,48 +1,36 @@
 import ErrorMessage from "../error/Eror";
 
-type Mode =
-  | 'text'
-  | 'tel'
-  | 'email'
-  | 'numeric'
-  | 'linksSM'
- 
-
-  
-
-  interface InputTextProps  {
-  error: any;
-  handleChange?: (event: any) => void;
-  isRequired: boolean;
-  register: any;
-  label: string;
-  name: string;
+export type InputTextProps = {
   placeholder: string;
-  type: string;
-  max?: number;
-  mode?: Mode;
+  id: string;
+  isRequired: boolean;
+  register: Function;
+  children: React.ReactNode;
+  label: string;
+  error: any;
 };
 
-export const InputText = ({ name, error, isRequired, register, label, placeholder, handleChange, type,  max,
-  mode,  }
+export const InputText = ({ 
+  placeholder, id, isRequired, register,  label,   error,
+  }
   : InputTextProps) => {
 
   return (
-      <p>
-        <label htmlFor="inputText">{label}</label>
+   
+<p>
+<label htmlFor="inputText">{label}</label>
         <input
           className="form-input"
-          onChange={handleChange}
-          name={name}
-          placeholder={placeholder}
-          required={isRequired}
-          {...register(name)}
-          type={type}
-          inputMode={mode}
-          maxLength={max}
+          id={id} 
+          required={isRequired} 
+          placeholder={placeholder}          
+          {...register(id)}
+      
         />
         {error && <ErrorMessage message={error.message} />}
-      </p>
+        </p>
+
+  
   );
 }
 

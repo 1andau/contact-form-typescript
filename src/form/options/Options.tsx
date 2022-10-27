@@ -1,32 +1,39 @@
 import { FormEvent } from 'react';
-import {SelectButton, SelectDiv } from '../styles'; 
+import { SelectButton, SelectDiv } from '../styles';
+import ErrorMessage from "../error/Eror";
 
-export interface OptionsProps {
-    label: string;
-    value: string;
-  }
+type OptionsProps = {
+  label: string;
+  value: string;
+};
 
-  interface SelecterProps {
-    handleSelect: (event: FormEvent) => void;
-    name: string;
-    options: Array<OptionsProps>;
-    register: any;
-  }
+interface SelecterProps {
+  id: string;
+  options: Array<OptionsProps>;
+  register: any;
+  isRequired: boolean;
+  error: any; 
 
-export const Options = ({ name, options, register, handleSelect}: SelecterProps):JSX.Element => (
+}
 
-      <SelectDiv>
-        <SelectButton name={name} {...register(name)}>
-          {options.map((obj, index) => (
-            <option
-            key={index} 
-            onChange={handleSelect}
-            value={obj.value}>
+export const Options = ({
+  id,
+  options,
+  register,
+  isRequired,
+  error, 
+
+}: SelecterProps)=> (
+  <SelectDiv >
+    <SelectButton  id={id} required={isRequired} {...register(id)}>
+      {options.map((obj, index) => (
+        <option
+          key={index}>
           {obj.label}
-            </option>
-          ))}
-        </SelectButton>
+        </option>
+      ))}
+    </SelectButton>
+    {error && <ErrorMessage message={error.message} />}
 
-      </SelectDiv>
-
-)
+  </SelectDiv>
+);

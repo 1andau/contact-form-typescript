@@ -17,7 +17,7 @@ html {
       margin: auto;
   }
 }
-p label{
+div label{
   position: absolute;
   top: -10px;
   left: 23px;
@@ -28,7 +28,7 @@ p label{
   font-weight: 400;
   color: #828282;
 }
-p label:after{
+div label:after{
 content: " ";
       background-color: #fff;
       width: 100%;
