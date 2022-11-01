@@ -6,7 +6,7 @@ type OptionsProps = {
   value: string;
 };
 
-interface SelecterProps {
+export interface SelecterProps {
   id: string;
   options: Array<OptionsProps>;
   register: any;
@@ -24,9 +24,10 @@ export const Select = ({
 
 }: SelecterProps)=> (
   <SelectDiv >
-    <SelectButton  id={id} required={isRequired} {...register(id)}>
+    <SelectButton id={id}  data-testid={id}  required={isRequired} {...register(id)}>
       {options.map((obj, index) => (
-        <option
+        <option 
+        value= {obj.value}
           key={index}>
           {obj.label}
         </option>

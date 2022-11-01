@@ -1,10 +1,10 @@
 export const selecterCities = [
-  { label: 'Выберите город*', value: '' },
-  { label: 'Москва', value: '' },
-  { label: 'Санкт-Петербург', value: '' },
-  { label: 'Новосибирск', value: '' },
-  { label: 'Казань', value: '' },
-  { label: 'Красноярск', value: '' },
+  { label: 'Выберите город*', value: 'Выберите город*' },
+  { label: 'Москва', value: '2Москва' },
+  { label: 'Санкт-Петербург', value: 'Санкт-Петербург' },
+  { label: 'Новосибирск', value: 'Новосибирск' },
+  { label: 'Казань', value: 'Казань' },
+  { label: 'Красноярск', value: 'Красноярск' },
 ];
 
 export const selecterSources = [

@@ -1,74 +1,130 @@
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
 }
+
 .App {
   text-align: center;
 }
-html {
-  body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
-      margin: auto;
-  }
-}
-div label{
+
+div label {
   position: absolute;
   top: -10px;
   left: 23px;
   padding: 2px;
   z-index: 1;
-  font-size: 12px;
+  font-size: 10px;
   font-family: 'SF UI Display';
   font-weight: 400;
   color: #828282;
 }
-div label:after{
-content: " ";
-      background-color: #fff;
-      width: 100%;
-      height: 13px;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      z-index: -1;
-}
-label {
-font-size: 12px;
-font-weight: 500;
-display: inline-block;
-margin-bottom: .5rem;
-}
-input{
-box-shadow: none !important;
-}
- .form-input {
-  width: 100%;
-  border: 1px solid #bdbdbd;
-  border-radius: 5px;
-  padding: 1em; 
-}
 
-button {
-  font: inherit;
-  font-size: 1.25rem;
-  color: inherit;
-  background-color: palevioletred;
-  border: none;
-  cursor: pointer;
-  padding: 13px 30px;
-  align-self: flex-start;
-  justify-self: flex-end;
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
+@media only screen and (max-width: 400px) {
+  div label {
+    font-size: 7px;
   }
 }
 
+div label:after {
+  content: " ";
+  background-color: #fff;
+  width: 100%;
+  height: 13px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
 
+label {
+  display: flex;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+input {
+  box-shadow: none !important;
+}
+
+
+.contact-links,
+.contact-form-wrapper {
+  width: 50%;
+  padding: 8% 5% 10% 5%;
+}
+
+
+.contact-links {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.contact-form-wrapper {
+  background-color: #ffffff8f;
+  border-radius: 0 10px 10px 0;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .contact-links,
+  .contact-form-wrapper {
+    width: 100%;
+  }
+
+  .contact-links {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .contact-form-wrapper {
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+.image {
+  width: 300px;
+  margin-bottom: 10px;
+
+}
+
+h3,
+p {
+  text-align: center;
+  text-align: left;
+  margin-bottom: 10px;
+
+}
+
+h3 {
+  font-size: 20px;
+  color: rgb(166, 166, 166);
+}
+
+p {
+  font-size: 15px;
+}
+
+
+
+
+
+@media only screen and (max-width: 800px) {
+  .image {
+    width: 50%;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .image {
+    width: 80%;
+  }
+
+}

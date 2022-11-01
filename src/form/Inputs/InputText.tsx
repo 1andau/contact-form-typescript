@@ -1,4 +1,7 @@
 import ErrorMessage from "../error/Eror";
+import { FormInput } from "../styles";
+import { FormItem } from "../styles";
+
 
 export type InputTextProps = {
   placeholder: string;
@@ -8,6 +11,7 @@ export type InputTextProps = {
   children: React.ReactNode;
   label: string;
   error: any;
+  
 };
 
 export const InputText = ({ 
@@ -16,19 +20,23 @@ export const InputText = ({
   : InputTextProps) => {
 
   return (
-   
+   <FormItem>
 <p>
-<label htmlFor="inputText">{label}</label>
-        <input
-          className="form-input"
+<label>{label}</label>
+        <FormInput
           id={id} 
           required={isRequired} 
           placeholder={placeholder}          
           {...register(id)}
+          data-testid={id}
+
       
         />
         {error && <ErrorMessage message={error.message} />}
         </p>
+   </FormItem>
+
+
 
   
   );

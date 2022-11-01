@@ -1,45 +1,46 @@
 import styled from 'styled-components'; 
 
-export const Container = styled.main`
-max-width: 1440px;
+export const Contact = styled.div`
 display: flex;
-width: 1440px;
-height: 586px;
-padding: 60px 0px;
-flex-direction: column;
-align-items: flex-start;
-flex-direction: row;
-gap: 60px;
+justify-content: center;
 align-items: center;
-`;
+`
+export const ContactBox = styled.div`
+width: clamp(100px, 100%, 1000px);
+margin: 40px 15px;
+display: flex;
+flex-wrap: wrap;
+@media only screen and (max-width: 400px) {
+  ContactBox{
+    width: 95%;
+    margin: 8% 5%;
+  }
+}`
 
-export const FormContainer = styled.div`
-background: #fff;
-
-`;
 export const Form = styled.form`
 display: grid;
 grid-template-columns: 1fr 1fr;
 grid-gap: 20px;
 
-p{
-    margin: 0;
-    position: relative;
+@media only screen and (max-width: 600px) {
+  {
+    grid-gap: 5px;
+   }}
+`
 
-}
+export const FormItem = styled.div`
+position: relative;
+`
 
-`;
 
+export const FormInput = styled.input`
+width: 100%;
+border: 1px solid #bdbdbd;
+border-radius: 5px;
+padding: 1em; 
+font-size: 13px;
+`
 
-
-export const FullInput = styled.div`
-grid-column: 1 / 3;
-
-`;
-export const FullInputContainer = styled.div`
-display: grid;
-grid-gap: 20px;
-`;
 
 export const SelectDiv = styled.div`
 position: relative;
@@ -63,29 +64,57 @@ export const SelectButton = styled.select`
 -webkit-appearance: none;
 background: white;
 border: none;
-border-radius: 0;
+border-radius: 8px;
 cursor: pointer;
 padding: 12px;
 width: 100%;
-font-size: 18px;
+font-size: 13px;
 &:focus {
   color: black;
 }
 `;
 
-export const ButtonSend = styled.button`
-width: 380px;
-height: 50px;
-align-items: center;
-background: #E3E3E3;
-border-radius: 8px;
-border: none;
-`
 
-export const HiddenText = styled.span`
-font-size: 15px;
+
+export const HiddenText = styled.div`
 margin: 10px 10px;
 cursor: pointer;
+align-items: center;
+color: black; 
+ p{
+  font-size: 12px;
+  color: black; 
+
+
+ }
+`
+export const FullInput = styled.div`
+grid-column: 1 / 3;
+
 `
 
+export const FullInputContainer = styled.div`
+display: grid;
+grid-gap: 20px;
+`
 
+export const Button = styled.button`
+font: inherit;
+font-size: 15px;
+color: inherit;
+background-color: grey;
+border: none;
+cursor: pointer;
+padding: 13px 30px;
+align-self: flex-start;
+justify-self: flex-end;
+margin: 10px;
+
+
+&:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+
+`
