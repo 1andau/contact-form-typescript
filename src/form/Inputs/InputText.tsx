@@ -11,34 +11,41 @@ export type InputTextProps = {
   children: React.ReactNode;
   label: string;
   error: any;
-  
+  value: any;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
 };
 
 export const InputText = ({ 
-  placeholder, id, isRequired, register,  label,   error,
+  placeholder, id, isRequired, register,  label,   error, 
+  value, 
+  onChange
+
   }
   : InputTextProps) => {
 
   return (
-   <FormItem>
-<p>
-<label>{label}</label>
+    <FormItem>
+      <p>
+        <label>{label}</label>
         <FormInput
-          id={id} 
-          required={isRequired} 
-          placeholder={placeholder}          
+          id={id}
+          required={isRequired}
+          placeholder={placeholder}
           {...register(id)}
-          data-testid={id}
-
-      
+          value={value}
+          onChange={onChange}
+          // data-testid={id}
         />
         {error && <ErrorMessage message={error.message} />}
-        </p>
-   </FormItem>
+      </p>
+    </FormItem>
 
 
-
-  
   );
 }
+
+
+
+
 

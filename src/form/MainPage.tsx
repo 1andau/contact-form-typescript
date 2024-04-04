@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InfoBlock } from './Info/InfoBlock';
 import { InputText } from './Inputs/InputText';
 import {
@@ -25,25 +25,39 @@ export interface FormValues {
 export const MainPage = () => {
   const [open, setOpen] = React.useState(false);
 
+  const [emailState, setEmailState] = useState({})
+
   const validationSchema = yup.object().shape({
-    name: yup.string().required(('error! fill in the field')),
-    email: yup.string().lowercase().required(('error! fill in the field')).email(('error email')),
-    phone: yup.string().min(10, ('error! fill in the field')),
-    linkSocialMedia: yup.string().min(3, ('error! fill in the field')),
-    companyName: yup.string().required(('error! fill in the field')),
+
+    name: yup.string().required("Только буквы")
+   .matches(/^[aA-zZ\s]+$/, "Используйте буквы"),
+    email: yup.string().lowercase().required(('Заполните обязательное поле Email')).email(('Неккорректный Email')),
+    phone: yup.string().min(10, ('Заполните обязательное поле номер телефона')),
+    linkSocialMedia: yup.string().min(3, ('Заполните обязательное поле ссылка на профиль')),
+    companyName: yup.string().required(('Заполните поле наименование компании')),
     cities: yup.string().trim().required(),
   });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState,
-    formState: { errors }
-  } = useForm<FormValues>({
+
+  const { register, handleSubmit, reset, formState, setValue, formState: { errors } } 
+  = useForm<FormValues>({
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
   });
+
+  const [formValues, setFormValues] = React.useState<FormValues>({
+    email: "",
+    name:"",
+    phone: 0, 
+    linkSocialMedia:"", 
+    cities:"", 
+    sources:"", 
+    companyName: "", 
+    recipient:""
+  });
+
+
+
 
   React.useEffect(() => {
     if (formState.isSubmitSuccessful) {
@@ -52,12 +66,31 @@ export const MainPage = () => {
   }, [formState, reset]);
 
   const onSubmit = (data: FormValues) => {
-    setData(data);
+    setFormValues(data)
+    
     alert(JSON.stringify(data));
+  };
+  
+
+  const onChangeEmail = (data: FormValues) => {
+    setEmailState(data.email)
+    console.log(data.email, "EMAIL ");
 
   };
 
 
+
+
+  const changeFormValue = (fieldName: string, value: any) => {
+
+    setFormValues((prev) => ({
+      ...prev,
+      [fieldName]: value
+
+    }));
+    // console.log(value)
+
+  }
 
 return (
 
@@ -72,22 +105,39 @@ return (
  label={`${('Ваше имя*')} *`}
  placeholder={('Иван')}
  error={errors.name}
- data-testid="name">
+ value = {formValues.name}
+ onChange={(e) => {
+  changeFormValue("name", e.target.value);
+}} 
+data-testid="name">
+
 </InputText>
 
-<InputText id={"email"} isRequired={true} register={register}
-label={`${('Email')} *`}
-placeholder={('example@skdesign.ru')}
-error={errors.email}
-data-testid="email">
-</InputText> 
+
+<InputText
+ id={"email"} 
+isRequired={true}
+ register={register}
+      label={`${('Email')} *`}
+      placeholder={('example@skdesign.ru')}
+      error={errors.email}
+      value={formValues.email}
+      onChange={(e) => {
+        changeFormValue("email", e.target.value);
+      }}
+
+ data-testid="email">
+</InputText>
 
 
-
-<InputText id={"phone"} isRequired={true} register={register}
+ <InputText id={"phone"} isRequired={true} register={register}
 label={`${('Номер телефона')} *`}
 placeholder={('+7 (000) 000-00')}
 error={errors.phone}
+value = {formValues.phone}
+onChange={(e) => {
+  changeFormValue("phone", e.target.value);
+}}
 data-testid="phone">
 </InputText> 
 
@@ -97,16 +147,20 @@ data-testid="phone">
 label={`${('Ссылка на профиль')} *`}
 placeholder={('instagram.com/skde…')}
 error={errors.linkSocialMedia}
+value = {formValues.linkSocialMedia}
+onChange={(e) => {
+  changeFormValue("linkSocialMedia", e.target.value);
+}}
 data-testid="linkSocialMedia">
 </InputText> 
-
 
 
 <FullInput>
 <FullInputContainer>
 
 <Select
-  id={"cities"} isRequired={true} 
+  id={"cities"}
+  isRequired={true} 
   options={selecterCities}
   register={register}
   error={errors.cities}
@@ -116,6 +170,10 @@ data-testid="linkSocialMedia">
 label={`${('Название организации/студии')} *`}
 placeholder={('SK Design')}
 error={errors.companyName}
+value={formValues.companyName}
+onChange={(e) => {
+  changeFormValue("companyName", e.target.value);
+}}
 data-testid="companyName">
 </InputText>
 
@@ -126,10 +184,17 @@ data-testid="companyName">
 
   {open && (
     <>
- <InputText id={"recipient"} isRequired={true} register={register}
+ <InputText id={"recipient"}
+  isRequired={true} 
+  register={register}
  label={`${('Получатель')} *`}
  placeholder={('ФИО')}
- error={errors.recipient}>
+ value = {formValues.recipient}
+ onChange={(e) => {
+  changeFormValue("recipient", e.target.value);
+}} error={errors.recipient}
+ 
+ >
  </InputText>
 
  <Select
@@ -142,7 +207,7 @@ data-testid="companyName">
   )}
 
 </FullInputContainer>
-<Button type="submit" data-testid="submit" disabled={!formState.isValid}>
+<Button type="submit" data-testid="submit">
 Send
 </Button>
 </FullInput>
@@ -150,115 +215,6 @@ Send
     </div>
   </ContactBox>
 </Contact>
-
-
-
-
-
-//   <Container >
-//     
-//     <InfoBlock/>
-//     <FormContainer>
-//     <Form onSubmit={handleSubmit(onSubmit)}>
-// <InputText id={"name"} isRequired={true} register={register}
-// label={`${('Ваше имя*')} *`}
-// placeholder={('Иван')}
-// error={errors.name}
-// data-testid="name"
-// >
-// </InputText>
-
-
-
-//  <InputText id={"email"} isRequired={true} register={register}
-// label={`${('Email')} *`}
-// placeholder={('example@skdesign.ru')}
-// error={errors.email}
-// data-testid="email"
-
-// >
-// </InputText> 
-
-
-// <InputText id={"phone"} isRequired={true} register={register}
-// label={`${('Номер телефона')} *`}
-// placeholder={('+7 (000) 000-00')}
-// error={errors.phone}
-// data-testid="phone"
-
-// >
-// </InputText> 
-
-
-// <InputText id={"linkSocialMedia"} isRequired={true} register={register}
-// label={`${('Ссылка на профиль')} *`}
-// placeholder={('instagram.com/skde…')}
-// error={errors.linkSocialMedia}
-// data-testid="linkSocialMedia"
-
-// >
-// </InputText> 
-
-
-// <FullInput>
-// <FullInputContainer>
-
-//  <Select
-//    id={"cities"} isRequired={true} 
-//    options={selecterCities}
-//    register={register}
-//    error={errors.cities}
-//    data-testid="cities"
-//    />
-
-
-// <InputText id={"companyName"} isRequired={true} register={register}
-// label={`${('Название организации/студии')} *`}
-// placeholder={('SK Design')}
-// error={errors.companyName}
-// data-testid="companyName"
-
-// >
-// </InputText>
-
-
-//        {/* =================HIDDEN BLOCK =========================*/}
-
-// <HiddenText onClick={() => setOpen(!open)}>
-//   <p>{open ? 'Скрыть дополнительные поля ▼ ' : 'Показать дополнительные поля ▲'}</p>
-// </HiddenText>
-
-//  {open && (
-//    <>
-// <InputText id={"recipient"} isRequired={true} register={register}
-// label={`${('Получатель')} *`}
-// placeholder={('ФИО')}
-// error={errors.recipient}
-
-// >
-// </InputText>
-
-// <Select
-//    id={"sources"} isRequired={true} 
-//    options={selecterSources}
-//    register={register}
-//    error={errors.sources}
-//    data-testid="sources"
-// />
-//    </>
-//  )}
-//  </FullInputContainer>
-//  <button className="contact-form__submit-button" type="submit" data-testid="submit" disabled={!formState.isValid}>
-//             Send
-//           </button>
-// </FullInput>
-
-
-//           </Form>
-
-// </FormContainer>
-// </Container >
-
 );
 }
 

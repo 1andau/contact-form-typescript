@@ -5,7 +5,7 @@ export const Error = styled.div.attrs(() => ({
   }))`
 
   color: red;
-  font-size: 15px;
+  font-size: 10px;
   left: 0;
 
   display: flex;

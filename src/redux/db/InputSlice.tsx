@@ -4,6 +4,7 @@ import { FormValues } from '../../form/MainPage';
 const initialState: FormValues =  {
   name: "",
   email: "",
+  phone: 0, 
   linkSocialMedia: "",
   companyName: "",
   recipient: "",
@@ -17,10 +18,11 @@ export const DataSliceState = createSlice({
 
   reducers: {
       setData: (state, action) => action.payload,
-      
+            
   }, 
 });
 
 export const {  setData } = DataSliceState.actions
+
 export default DataSliceState.reducer;
 
